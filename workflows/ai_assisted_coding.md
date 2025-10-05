@@ -9,7 +9,6 @@
 
 #### Pros
 - High degree of user control
-- Works well for isolated changes, single files
 - Can refine code very precisely
 - Remembers historical context and prior plans
 
@@ -18,6 +17,10 @@
   - Unsustainable with large, interconnected codebases
 - Historical context can get out of date
 - Juggles several different chats for each task
+
+#### Use-Cases
+- Works well for isolated changes, single files
+- Coding where I know exactly what I want
 
 ## 2. Local Codex Edits
 - Ask Codex to implement features and make changes
@@ -39,6 +42,10 @@
 - Difficult to refine different versions
 - No environment; can't run tests
 
+#### Use-Cases
+- Specifically-instructed feature plug-ins and refactors
+- Often frustrating
+
 ## 3. Plan With Chat, Implement With Codex
 - Use method #1 to generate an instructional `plan.md` document
 - Feed `plan.md` into method #2 to guide implementation
@@ -51,4 +58,31 @@
 - Repo context still only comes from manual copy-paste.
 - ChatGPT-4o does not seem to be good at generating `plan.md`. It describes too much step-by-step implementation detail, while failing to summarize the high-level concepts decided in planning. 
 
+#### Use-Cases
+- Possibly addresses the shortcomings of Method #2
+- Need to find better ways to generate `plan.md` files
 
+## 4. Codex Cloud
+- Set up an environment
+- Plan with chat mode
+- Request feature implementation with Code mode (with up to 4 attempts)
+
+#### Pros
+- Explictly choose chat mode vs code mode
+- Full repo context in both read and write
+- Automated multiple attempts (up to 4)
+- Easy to apply changes independently to different parallel branches
+- Doesn't use tokens?
+- Can install the package and run tests in the containerized environment
+
+#### Cons
+- In single-shot generation of 4 attempts, the different attempts don't learn from each other.
+- Not as much refinement control as Method #1
+- Messy to compare different attempt versions
+- No control over model usage?
+- Slower than local
+
+#### Use-Cases
+- Implementing major features or refactors
+- Need to find effective ways to diff
+- Use ChatGPT to help compare attempt versions?
