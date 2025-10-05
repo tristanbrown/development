@@ -17,6 +17,7 @@
   - Unsustainable with large, interconnected codebases
 - Historical context can get out of date
 - Juggles several different chats for each task
+- Highest risk of premature architectural convergence (may miss better designs if I lock in too early)
 
 #### Use-Cases
 - Works well for isolated changes, single files
@@ -24,7 +25,52 @@
 - Can get a good feedback loop going, creating momentum on a project
 - Becomes difficult as the codebase grows
 
-## 2. Local Codex Edits
+## 2. Codex Cloud
+- Set up an environment
+- Plan with "Ask" mode
+- Request feature implementation with Code mode (with up to 4 attempts)
+
+#### Pros
+- Explicitly choose chat mode vs code mode
+- Full repo context in both read and write
+- Automated multiple attempts (up to 4)
+- Easy to apply changes independently to different parallel branches
+- Doesn't use tokens?
+- Can install the package and run tests in the containerized environment
+
+#### Cons
+- In single-shot generation of 4 attempts, the different attempts don't learn from each other.
+- Not as much refinement control as Method #1
+- Messy to compare different attempt versions
+- Can't direct the style or structure of code unless manually pasted as comments
+- No control over model choice?
+- Slower than local
+
+#### Use-Cases
+- Implementing major features or refactors
+- Cases were the concept is simple, but I want to explore different engineering solutions
+- Need to find faster, more effective ways to diff and review the attempt versions
+- Use ChatGPT to help compare attempt versions?
+- Not sure yet of the effectiveness or code quality
+
+## 3. Plan With Chat, Implement With Codex
+- Use Method #1 to generate an instructional `plan.md` document
+- Feed `plan.md` into Codex (local) or Codex Cloud prompt to guide implementation
+- Not sure which model to use for implementation (gpt-5-codex-medium?)
+
+#### Pros
+- Gets the context and instructions-following advantages of Method #1 with the hands-off implementation of Codex.
+
+#### Cons
+- Repo context still only comes from manual copy-paste.
+- ChatGPT-4o does not seem to be good at generating `plan.md`. It describes too much step-by-step implementation detail, while failing to summarize the high-level concepts decided in planning. 
+
+#### Use-Cases
+- Useful when architectural precision is more important than architectural discovery
+- Cases where the planning and design decisions are crucial
+- Will only work if I can find better ways to generate `plan.md` files
+
+## 4. Local Codex Edits (**Deprecated — use only for trivial or low-risk tasks**)
 - Ask Codex to implement features and make changes
 - Model choices:
   - **gpt-5-medium (or lower):** Opinionated and often wrong.
@@ -36,6 +82,7 @@
 - Full repo context
 - Operates autonomously (very hands-off)
 - Just one chat window
+- Quick
 
 #### Cons
 - Uses tokens
@@ -49,46 +96,14 @@
 - Avoid for tasks requiring any degree of human judgement: Often frustrating
 - I spend time and mental health arguing with the model and requesting reversions
 
-## 3. Plan With Chat, Implement With Codex
-- Use method #1 to generate an instructional `plan.md` document
-- Feed `plan.md` into method #2 to guide implementation
-- Not sure which model to use for implementation (gpt-5-codex-medium?)
+## Strategy Selection Summary
 
-#### Pros
-- Gets the context and instructions-following advantages of Method #1 with the hands-off implementation of Method #2.
+| Task Type                                      | Best Strategy                         |
+|-----------------------------------------------|----------------------------------------|
+| Isolated or precision-guided feature addition | Iterative Copy-Paste (ChatGPT)         |
+| Simple concept, complex engineering options    | Codex Cloud                            |
+| Architectural spec already written            | Plan with Chat, Implement with Codex   |
+| Codegen where I don’t want to handhold        | Codex Cloud                            |
+| Trivial boilerplate, renames, or formatting    | Local Codex Edits                      |
 
-#### Cons
-- Repo context still only comes from manual copy-paste.
-- ChatGPT-4o does not seem to be good at generating `plan.md`. It describes too much step-by-step implementation detail, while failing to summarize the high-level concepts decided in planning. 
 
-#### Use-Cases
-- Possibly addresses the shortcomings of Method #2
-- Cases where the planning and design decisions are crucial
-- Will only work if I can find better ways to generate `plan.md` files
-
-## 4. Codex Cloud
-- Set up an environment
-- Plan with chat mode
-- Request feature implementation with Code mode (with up to 4 attempts)
-
-#### Pros
-- Explictly choose chat mode vs code mode
-- Full repo context in both read and write
-- Automated multiple attempts (up to 4)
-- Easy to apply changes independently to different parallel branches
-- Doesn't use tokens?
-- Can install the package and run tests in the containerized environment
-
-#### Cons
-- In single-shot generation of 4 attempts, the different attempts don't learn from each other.
-- Not as much refinement control as Method #1
-- Messy to compare different attempt versions
-- No control over model choice?
-- Slower than local
-
-#### Use-Cases
-- Implementing major features or refactors
-- Cases were the concept is simple, but the engineering may be complex
-- Need to find faster, more effective ways to diff and review the attempt versions
-- Use ChatGPT to help compare attempt versions?
-- Not sure yet of the effectiveness or code quality
