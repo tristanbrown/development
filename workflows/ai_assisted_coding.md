@@ -21,6 +21,8 @@
 #### Use-Cases
 - Works well for isolated changes, single files
 - Coding where I know exactly what I want
+- Can get a good feedback loop going, creating momentum on a project
+- Becomes difficult as the codebase grows
 
 ## 2. Local Codex Edits
 - Ask Codex to implement features and make changes
@@ -45,6 +47,7 @@
 #### Use-Cases
 - Specifically-instructed feature plug-ins and refactors
 - Often frustrating
+- I spend time and mental health arguing with the model and requesting reversions
 
 ## 3. Plan With Chat, Implement With Codex
 - Use method #1 to generate an instructional `plan.md` document
@@ -79,10 +82,11 @@
 - In single-shot generation of 4 attempts, the different attempts don't learn from each other.
 - Not as much refinement control as Method #1
 - Messy to compare different attempt versions
-- No control over model usage?
+- No control over model choice?
 - Slower than local
 
 #### Use-Cases
 - Implementing major features or refactors
-- Need to find effective ways to diff
+- Need to find faster, more effective ways to diff and review the attempt versions
 - Use ChatGPT to help compare attempt versions?
+- Not sure yet of the effectiveness or code quality
