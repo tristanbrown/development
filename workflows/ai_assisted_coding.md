@@ -106,7 +106,7 @@
 | Codegen where I don’t want to handhold        | Codex Cloud                            |
 | Trivial boilerplate, renames, or formatting    | Local Codex Edits                      |
 
-## Strategy Fallbacks for Ambiguous Cases (Ordered by Patience Level)
+## Strategy Fallbacks for Ambiguous Cases
 
 | Task Type / Ambiguity                                                | Primary Strategy                      | Alternative Strategy                     |
 |----------------------------------------------------------------------|----------------------------------------|-------------------------------------------|
