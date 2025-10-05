@@ -45,8 +45,8 @@
 - No environment; can't run tests
 
 #### Use-Cases
-- Specifically-instructed feature plug-ins and refactors
-- Often frustrating
+- Simple, brainless, repo-wide updates (mostly boilerplate)
+- Avoid for tasks requiring any degree of human judgement: Often frustrating
 - I spend time and mental health arguing with the model and requesting reversions
 
 ## 3. Plan With Chat, Implement With Codex
@@ -63,7 +63,8 @@
 
 #### Use-Cases
 - Possibly addresses the shortcomings of Method #2
-- Need to find better ways to generate `plan.md` files
+- Cases where the planning and design decisions are crucial
+- Will only work if I can find better ways to generate `plan.md` files
 
 ## 4. Codex Cloud
 - Set up an environment
@@ -87,6 +88,7 @@
 
 #### Use-Cases
 - Implementing major features or refactors
+- Cases were the concept is simple, but the engineering may be complex
 - Need to find faster, more effective ways to diff and review the attempt versions
 - Use ChatGPT to help compare attempt versions?
 - Not sure yet of the effectiveness or code quality
