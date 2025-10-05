@@ -106,4 +106,14 @@
 | Codegen where I don’t want to handhold        | Codex Cloud                            |
 | Trivial boilerplate, renames, or formatting    | Local Codex Edits                      |
 
+## Strategy Fallbacks for Ambiguous Cases (Ordered by Patience Level)
+
+| Task Type / Ambiguity                                                | Primary Strategy                      | Alternative Strategy                     |
+|----------------------------------------------------------------------|----------------------------------------|-------------------------------------------|
+| I'm tempted to use Local Codex but it's not *that* trivial           | Codex Cloud                            | Plan with Chat, Implement with Codex      |
+| I want quick output, but might refine it later manually              | Codex Cloud                            | Plan with Chat, Implement with Codex      |
+| I want to try a design idea, but also compare other possibilities    | Codex Cloud                            | Iterative Copy-Paste (ChatGPT)            |
+| I know roughly what I want, but not how to structure it              | Plan with Chat, Implement with Codex   | Codex Cloud                               |
+| I have a partial plan, but not enough for full automation            | Plan with Chat, Implement with Codex   | Iterative Copy-Paste (ChatGPT)            |
+| I need to make usage decisions before implementation                 | Plan with Chat, Implement with Codex   | Iterative Copy-Paste (if small)           |
 
